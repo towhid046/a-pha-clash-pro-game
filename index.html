@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -12,18 +12,96 @@
     />
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- custom css -->
-    <link rel="stylesheet" href="/style/style.css">
+    <link rel="stylesheet" href="/style/style.css" />
   </head>
   <body class="font-poppins">
-    <main class="min-h-screen bg-[#010313] bg-[url(/images/background.png)] bg-no-repeat bg-center">
-        <section class="home text-white flex min-h-screen items-center justify-center">
-           <div class="text-center space-y-4">
-            <h1 class="anton-regular text-9xl uppercase">ALPHABET CLASH</h1>
-            <p class="text-2xl poppins-medium">Unleash Your Keyboard Kung Fu : Press "Enter" to Play</p>
-            <button class="btn bg-white text-black text-2xl poppins-semibold hover:bg-slate-200">Play now</button>
-           </div>
-        </section>
-        <section class="play-ground"></section>
+    <main
+      class="min-h-screen bg-[#010313] bg-[url(/images/background.png)] bg-no-repeat bg-center "
+    >
+      <!-- home page -->
+      <section
+        class="home text-white flex min-h-screen items-center justify-center hidden container mx-auto"
+      >
+        <div class="text-center space-y-6">
+          <h1 class="anton-regular text-9xl uppercase">ALPHABET CLASH</h1>
+          <p class="text-2xl poppins-medium">
+            Unleash Your Keyboard Kung Fu : Press "Enter" to Play
+          </p>
+          <button
+            class="btn bg-white text-black text-2xl poppins-semibold hover:bg-slate-200"
+          >
+            Play now
+          </button>
+        </div>
+      </section>
+      <!-- playground page -->
+      <section class="play-ground w-3/4 flex justify-center mx-auto">
+        <div class=" flex flex-col justify-center min-h-screen gap-8">
+          <!-- screen -->
+            <div class="artboard artboard-horizontal phone-6 bg-[#FFFFFFBF] border-[16px] border-[#010101CC] rounded-xl">
+                <div class="flex items-center flex-col space-y-9">
+                    <p class="poppins-medium text-lg text-white bg-[#010101CC] px-6 pb-4 rounded-b-xl">Don't watch keyboard while playing...</p>
+                    <p class="text-9xl poppins-semibold text-[#010313]">Y</p>
+                </div>
+            </div>
+        
+          <!-- keyboard -->
+          <div class="keyboard">
+            <!-- kyeboard start -->
+            <div class="flex justify-center gap-1 my-1 w-full">
+              <kbd class="kbd">q</kbd>
+              <kbd class="kbd">w</kbd>
+              <kbd class="kbd">e</kbd>
+              <kbd class="kbd">r</kbd>
+              <kbd class="kbd">t</kbd>
+              <kbd class="kbd">y</kbd>
+              <kbd class="kbd">u</kbd>
+              <kbd class="kbd">i</kbd>
+              <kbd class="kbd">o</kbd>
+              <kbd class="kbd">p</kbd>
+            </div>
+            <div class="flex justify-center gap-1 my-1 w-full">
+              <kbd class="kbd">a</kbd>
+              <kbd class="kbd">s</kbd>
+              <kbd class="kbd">d</kbd>
+              <kbd class="kbd">f</kbd>
+              <kbd class="kbd">g</kbd>
+              <kbd class="kbd">h</kbd>
+              <kbd class="kbd">j</kbd>
+              <kbd class="kbd">k</kbd>
+              <kbd class="kbd">l</kbd>
+            </div>
+            <div class="flex justify-center gap-1 my-1 w-full">
+              <kbd class="kbd">z</kbd>
+              <kbd class="kbd">x</kbd>
+              <kbd class="kbd">c</kbd>
+              <kbd class="kbd">v</kbd>
+              <kbd class="kbd">b</kbd>
+              <kbd class="kbd">n</kbd>
+              <kbd class="kbd">m</kbd>
+              <kbd class="kbd">/</kbd>
+            </div>
+            <!-- keyboard end -->
+          </div>
+
+          <!-- buttons -->
+          <div class="buttons flex justify-between ">
+            <button class="btn bg-[#360490] rounded-full px-6 text-white border-none poppins-medium text-xl hover:bg-[#360491]">
+                Life
+                <img src="/images/heart.svg" alt="">
+                <span>1</span>
+              </button>
+              <button class="btn bg-[#360490] rounded-full px-6 text-white border-none poppins-medium text-xl hover:bg-[#360491]">
+                Score
+                <img src="/images/dollar.svg" alt="">
+                <span>1</span>
+              </button>
+          </div>
+
+        </div>
+      </section>
+      <!-- score page -->
+      <section class="score"></section>
     </main>
   </body>
 </html>
