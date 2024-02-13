@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Keyboard Event Demo</title>
+</head>
+<body>
+
+<p>Press the keys inside the box:</p>
+<div id="keyboard-input" tabindex="0" style="border: 1px solid black; padding: 10px;">
+  Press keys here
+  <kbd id="key-display"></kbd>
+</div>
+
+<script>
+    document.getElementById('keyboard-input').focus();
+document.getElementById('keyboard-input').addEventListener('keydown', function(event) {
+  // Prevent default behavior of keys if necessary
+//   event.preventDefault();
+
+  // Get the key code
+  var keyCode = event.keyCode;
+
+  // Display the key pressed inside <kbd> tag
+  document.getElementById('key-display').textContent = event.key;
+});
+</script>
+
+</body>
+</html>
