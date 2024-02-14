@@ -1,85 +1,33 @@
-function hide(elementId) {
-  document.getElementById(elementId).classList.add("hidden");
-}
-function show(elementId) {
-  document.getElementById(elementId).classList.remove("hidden");
-}
-
-function getARandomAlphabet() {
-  alphabet = [
-    "a",
-    "b",
-    "c",
-    "d",
-    "e",
-    "f",
-    "g",
-    "h",
-    "i",
-    "j",
-    "k",
-    "l",
-    "m",
-    "n",
-    "o",
-    "p",
-    "q",
-    "r",
-    "s",
-    "t",
-    "u",
-    "v",
-    "w",
-    "x",
-    "y",
-    "z",
-  ];
-  const letter = alphabet[Math.round(Math.random() * alphabet.length)];
-  return letter;
-}
-
-function setBackgroundColor(elementId) {
-  const element = document.getElementById(elementId);
-  element.classList.add("bg-orange-400");
-}
-
-function removeBackgroundColor(elementId) {
-  const element = document.getElementById(elementId);
-  element.classList.remove("bg-orange-400");
-}
-
-function setInnerText(elementId, text) {
-  let element = document.getElementById(elementId);
-  element.innerText = text;
-}
-
-function getInnerText(elementId) {
-  const element = document.getElementById(elementId);
-  const text = element.innerText;
-  return text;
-}
-
-function getFocus(elementId) {
-  document.getElementById(elementId).focus();
-}
-
 function play() {
   hide("home");
   show("play-ground");
-  continueGame();
   getFocus("keys-container");
+  continueGame();
+  setInnerText("score-state", 0);
+  setInnerText("life-state", 5);
 }
+// to press enter to play now;
+const playNowElement = document.getElementById("play-now-btn");
+playNowElement.focus();
 
-function gameEnd() {
+playNowElement.addEventListener("keyup", function (event) {
+  if (event.key === "Enter") {
+    play();
+  }
+});
+
+function gameEnd(pressedKey) {
   hide("play-ground");
   show("score");
   // update the final score:
   setInnerText("final-score", getInnerText("score-state"));
+
+  // remove the pressed key background color:
+  removeBackgroundColor(pressedKey);
 }
 
 function playAgain() {
-  hide("score");
-  show("play-ground");
+  play();
 }
 
 // Continue game function:
@@ -90,10 +38,10 @@ function continueGame() {
 
   // set the background of the key
   setBackgroundColor(alphabet);
-}
 
-// keyboard event listener:
-document.addEventListener("keyup", keyupEventHandelar);
+  // keyboard event listener:
+  document.addEventListener("keyup", keyupEventHandelar);
+}
 
 // keyup event handelar:
 let pressedKeyCount = 0;
@@ -122,7 +70,8 @@ function keyupEventHandelar(event) {
   if (
     pressedKey.toLowerCase() !== currentDisplayKey.toLowerCase() &&
     pressedKey !== "Escape" &&
-    lifeCount !== 0
+    lifeCount !== 0 &&
+    pressedKey !== "Enter"
   ) {
     setInnerText("life-state", lifeCount - 1);
     // setTimeout(function () {
@@ -136,7 +85,7 @@ function keyupEventHandelar(event) {
   }
 
   // if user press Esc key or press the keybord any key 26 times the game will be over:
-  if (pressedKey === "Escape" || pressedKeyCount === 26 || lifeCount === 0) {
-    gameEnd();
+  if (pressedKey === "Escape" || pressedKeyCount === 6 || lifeCount === 0) {
+    gameEnd(currentDisplayKey.toLowerCase());
   }
 }
