@@ -5,7 +5,8 @@ function play() {
   continueGame();
   setInnerText("score-state", 0);
   setInnerText("life-state", 5);
-}
+};
+
 // to press enter to play now;
 const playNowElement = document.getElementById("play-now-btn");
 playNowElement.focus();
@@ -16,19 +17,19 @@ playNowElement.addEventListener("keyup", function (event) {
   }
 });
 
-function gameEnd(pressedKey) {
+function gameEnd(key) {
   hide("play-ground");
   show("score");
   // update the final score:
   setInnerText("final-score", getInnerText("score-state"));
 
   // remove the pressed key background color:
-  removeBackgroundColor(pressedKey);
-}
+  removeBackgroundColor(key.toLowerCase())
+};
 
 function playAgain() {
   play();
-}
+};
 
 // Continue game function:
 function continueGame() {
@@ -41,7 +42,7 @@ function continueGame() {
 
   // keyboard event listener:
   document.addEventListener("keyup", keyupEventHandelar);
-}
+};
 
 // keyup event handelar:
 let pressedKeyCount = 0;
@@ -85,7 +86,7 @@ function keyupEventHandelar(event) {
   }
 
   // if user press Esc key or press the keybord any key 26 times the game will be over:
-  if (pressedKey === "Escape" || pressedKeyCount === 6 || lifeCount === 0) {
-    gameEnd(currentDisplayKey.toLowerCase());
+  if (pressedKey === "Escape" || pressedKeyCount === 26 || lifeCount === 0) {
+    gameEnd(currentDisplayKey);
   }
-}
+};
