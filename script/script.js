@@ -84,42 +84,56 @@ function continueGame() {
   // set or remove the background of the key
   setBackgroundColor(alphabet);
 
-  // get the pressed key
-  let exeCounter = 0;
-  document
-    .getElementById("keys-container")
-    .addEventListener("click", function (event) {
-      let key = event.target;
-      if (key.tagName === "KBD") {
-        exeCounter += 1 ;
-        let scoreCount = parseInt(getInnerText("score-state"));
-        // get the current value and display if the value is match:
-        let currentKey = getInnerText("display-key");
+  // // get the pressed key
+  // let exeCounter = 0;
+  // document
+  //   .getElementById("keys-container")
+  //   .addEventListener("click", function (event) {
+  //     let key = event.target;
+  //     if (key.tagName === "KBD") {
+  //       exeCounter += 1 ;
+  //       let scoreCount = parseInt(getInnerText("score-state"));
+  //       // get the current value and display if the value is match:
+  //       let currentKey = getInnerText("display-key");
 
-        if (key.innerText.toLowerCase() === currentKey.toLowerCase()) {
-          removeBackgroundColor(currentKey.toLowerCase());
+  //       if (key.innerText.toLowerCase() === currentKey.toLowerCase()) {
+  //         removeBackgroundColor(currentKey.toLowerCase());
 
-          const alphabetOne = getARandomAlphabet();
-          setInnerText("display-key", alphabetOne.toUpperCase());
+  //         const alphabetOne = getARandomAlphabet();
+  //         setInnerText("display-key", alphabetOne.toUpperCase());
 
-          setBackgroundColor(alphabetOne.toLowerCase());
+  //         setBackgroundColor(alphabetOne.toLowerCase());
 
-          setInnerText("score-state", (scoreCount += 1));
-        } else {
-          const lifeCount = parseInt(getInnerText("life-state"));
-          setInnerText("life-state", lifeCount - 1);
-          setTimeout(function () {
-            alert(`You have lost 1 life left!!`);
-          }, 200);
-        }
-      }
+  //         setInnerText("score-state", (scoreCount += 1));
+  //       } else {
+  //         const lifeCount = parseInt(getInnerText("life-state"));
+  //         setInnerText("life-state", lifeCount - 1);
+  //         setTimeout(function () {
+  //           alert(`You have lost 1 life left!!`);
+  //         }, 200);
+  //       }
+  //     }
 
-      if(exeCounter >= 5){
-        hide('play-ground');
-        show('score');
-        exeCounter = 0;
-        setInnerText('final-score', parseInt(getInnerText('score-state')))
-      }
+  //     if(exeCounter >= 26){
+  //       hide('play-ground');
+  //       show('score');
+  //       exeCounter = 0;
+  //       setInnerText('final-score', parseInt(getInnerText('score-state')))
+  //       setInnerText('score-state', 0)
+  //       setInnerText('life-state', 5)
+  //     }
 
-    });
+  //   });
+  
 }
+
+// keydown event:
+document.addEventListener('keyup', function(event){
+  // console.log(e.key)
+  let pressedKey = event.key;
+  const currentDisplayKey = getInnerText('display-key');
+  if(currentDisplayKey.toLowerCase() === pressedKey.toLowerCase()){
+    const alphabet = getARandomAlphabet();
+    setInnerText('display-key', alphabet.toUpperCase());
+  }
+})
