@@ -1,5 +1,6 @@
 function play() {
   hide("home");
+  hide('score')
   show("play-ground");
   getFocus("keys-container");
   continueGame();
