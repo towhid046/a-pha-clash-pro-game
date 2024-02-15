@@ -8,10 +8,9 @@ function play() {
 };
 
 // to press enter to play now;
-const playNowElement = document.getElementById("play-now-btn");
-playNowElement.focus();
+getFocus('play-now-btn')
 
-playNowElement.addEventListener("keyup", function (event) {
+document.getElementById("play-now-btn").addEventListener("keyup", function (event) {
   if (event.key === "Enter") {
     play();
   }
@@ -86,7 +85,7 @@ function keyupEventHandelar(event) {
   }
 
   // if user press Esc key or press the keybord any key 26 times the game will be over:
-  if (pressedKey === "Escape" || pressedKeyCount === 26 || lifeCount === 0) {
+  if (pressedKey === "Escape" || pressedKeyCount === 50 || lifeCount === 0) {
     gameEnd(currentDisplayKey);
   }
 };
