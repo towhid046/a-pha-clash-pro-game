@@ -6,34 +6,8 @@ function hide(elementId) {
   }
   
   function getARandomAlphabet() {
-    alphabet = [
-      "a",
-      "b",
-      "c",
-      "d",
-      "e",
-      "f",
-      "g",
-      "h",
-      "i",
-      "j",
-      "k",
-      "l",
-      "m",
-      "n",
-      "o",
-      "p",
-      "q",
-      "r",
-      "s",
-      "t",
-      "u",
-      "v",
-      "w",
-      "x",
-      "y",
-      "z",
-    ];
+    const sentence = 'abcdefghijklmnopqrstuvwxyz'
+    const alphabet = sentence.split('');
     const letter = alphabet[Math.round(Math.random() * (alphabet.length - 1))];
     return letter;
   }
